@@ -1,54 +1,61 @@
-import { Row, Form, Col } from 'react-bootstrap';
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth, logInWithEmailAndPassword, signInWithGoogle } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Row, Form, Col, InputGroup } from 'react-bootstrap';
+// import "../Login.css";
 function Login() {
-
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-
-
-
-    const handleOnChange2 = (event) => {
-        console.log(email)
-        setEmail(event.target.value)
-    }
-    const handleOnChange3 = (event) => {
-        console.log(password)
-        setPassword(event.target.value)
-    }
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (loading) {
+            // maybe trigger a loading screen
+            return;
+        }
+        if (user) navigate("/dashboard");
+    }, [user, loading]);
     return (
         <div className="Auth-form-container">
-            <Form className="Auth-form">
+            <div className="Auth-form">
                 <h3 className="Auth-form-title">Sign Up</h3>
-
-                <div className="form-group mt-3">
-                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
-                        <Form.Label column sm="3">
-                            Email
-                        </Form.Label>
+                <div as={Row} className="mb-3" controlId="formPlaintextEmail">
+                    <InputGroup className="box gap-3" >
+                        <Col sm="3"><InputGroup.Text column sm="3">Email</InputGroup.Text></Col>
                         <Col sm="8">
-                            <Form.Control value={email} onChange={handleOnChange2} type="Email" placeholder="example@gmail.com" />
+                            <Form.Control placeholder="Username"
+                                aria-label="Username" aria-describedby="basic-addon1" type="Email"
+                                value={email} onChange={(e) => setEmail(e.target.value)} />
                         </Col>
-                    </Form.Group>
+                    </InputGroup>
                 </div>
-                <div className="form-group mt-3">
-                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
-                        <Form.Label column sm="3">
-                            Password
-                        </Form.Label>
+                <div as={Row} className="mb-3">
+                    <InputGroup className="box gap-3" >
+                        <Col sm="3"><InputGroup.Text column sm="3">Password</InputGroup.Text></Col>
                         <Col sm="8">
-                            <Form.Control value={password} onChange={handleOnChange3} type="password" placeholder="Password" />
+                            <Form.Control placeholder="Password"
+                                aria-label="Password" aria-describedby="basic-addon1" type="password"
+                                value={password} onChange={(e) => setPassword(e.target.value)} />
                         </Col>
-                    </Form.Group>
+                    </InputGroup>
                 </div>
-                <div className="text-center">Already registered?{" "}
-                    <Link to="/register">Sign Up</Link>
+                <button
+                    className="btn btn-primary" onClick={() => logInWithEmailAndPassword(email, password)}>
+                    Login
+                </button>
+                <h3>OR</h3>
+                <button className="login__btn login__google" onClick={signInWithGoogle}>
+                    Login with Google
+                </button>
+                <div>
+                    <Link to="/reset">Forgot Password</Link>
                 </div>
-            </Form>
+                <div>
+                    Don't have an account? <Link to="/register">Register</Link> now.
+                </div>
+            </div>
         </div>
     );
 }
-
 export default Login;
