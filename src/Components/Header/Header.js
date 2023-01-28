@@ -13,7 +13,7 @@ function Header() {
         <Router>
             <div>
                 <div>
-                    <Navbar bg="light" expand="lg" fixed="top">
+                    <Navbar bg="light" expand="lg" >
                         <Container>
                             <Navbar.Brand href="#home">React-News App</Navbar.Brand>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />

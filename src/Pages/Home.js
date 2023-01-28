@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Col, Card, Image } from 'react-bootstrap';
+import { Col, Card } from 'react-bootstrap';
 import axios from 'axios';
 
 function Home() {
@@ -17,11 +17,11 @@ function Home() {
             {error && <div>{error.message}</div>}
             {news.map(article => (
                 <Col xs={3} key={article.title} className="my-3">
-                    <Card className="card">
-                        <Image className="card-image" src={article.urlToImage} alt={article.title} fluid />
+                    <Card style={{ width: '18rem', height: '26rem' }}>
+                        <Card.Img variant="top" src={article.urlToImage} fluid />
                         <Card.Body>
-                            <Card.Title>{article.title.slice(0, 20)}...</Card.Title>
-                            <Card.Text>{article.description.slice(0, 100)}...</Card.Text>
+                            <Card.Title>{article.title.slice(0, 40)}</Card.Title>
+                            <Card.Text style={{ textAlign: 'justify' }}>{article.description?.slice(0, 150)}</Card.Text>
                             <Card.Link href={article.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Read more</Card.Link>
                         </Card.Body>
                     </Card>
