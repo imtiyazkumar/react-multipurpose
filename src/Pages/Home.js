@@ -17,7 +17,7 @@ function Home() {
             {error && <div>{error.message}</div>}
             {news.map(article => (
                 <Col xs={3} key={article.title} className="my-3">
-                    <Card style={{ width: '18rem', height: '26rem' }}>
+                    <Card style={{ width: '18rem', height: '28rem' }}>
                         <Card.Img variant="top" src={article.urlToImage} fluid />
                         <Card.Body>
                             <Card.Title>{article.title.slice(0, 40)}</Card.Title>
