@@ -17,11 +17,11 @@ function Home() {
             {error && <div>{error.message}</div>}
             {news.map(article => (
                 <Col xs={3} key={article.title} className="my-3">
-                    <Card style={{ width: '18rem', height: '28rem' }}>
-                        <Card.Img variant="top" src={article.urlToImage} fluid />
+                    <Card style={{ width: '18rem', height: '27rem', marginLeft: 15 }}>
+                        <Card.Img variant="top" src={article.urlToImage} style={{ height: '12rem' }} />
                         <Card.Body>
                             <Card.Title>{article.title.slice(0, 40)}</Card.Title>
-                            <Card.Text style={{ textAlign: 'justify' }}>{article.description?.slice(0, 150)}</Card.Text>
+                            <Card.Text style={{ textAlign: 'justify' }}>{article.description?.slice(0, 100)}</Card.Text>
                             <Card.Link href={article.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary">Read more</Card.Link>
                         </Card.Body>
                     </Card>
