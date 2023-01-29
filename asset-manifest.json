@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/imtiyazkumar.github.io/react-multipurpose/static/css/main.125f3e41.css",
+    "main.js": "/imtiyazkumar.github.io/react-multipurpose/static/js/main.6eee9d01.js",
+    "static/js/787.367fecd4.chunk.js": "/imtiyazkumar.github.io/react-multipurpose/static/js/787.367fecd4.chunk.js",
+    "index.html": "/imtiyazkumar.github.io/react-multipurpose/index.html",
+    "main.125f3e41.css.map": "/imtiyazkumar.github.io/react-multipurpose/static/css/main.125f3e41.css.map",
+    "main.6eee9d01.js.map": "/imtiyazkumar.github.io/react-multipurpose/static/js/main.6eee9d01.js.map",
+    "787.367fecd4.chunk.js.map": "/imtiyazkumar.github.io/react-multipurpose/static/js/787.367fecd4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.125f3e41.css",
+    "static/js/main.6eee9d01.js"
+  ]
+}
