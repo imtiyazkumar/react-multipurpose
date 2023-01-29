@@ -39,7 +39,7 @@ function Register() {
                     <InputGroup className="box gap-3" >
                         <Col sm="3"><InputGroup.Text column sm="3">Email</InputGroup.Text></Col>
                         <Col sm="8">
-                            <Form.Control placeholder="Username"
+                            <Form.Control placeholder="Email Adress"
                                 aria-label="Username" aria-describedby="basic-addon1"
                                 value={email} onChange={(e) => setEmail(e.target.value)} />
                         </Col>
